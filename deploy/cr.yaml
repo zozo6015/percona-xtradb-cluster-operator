@@ -11,12 +11,12 @@ metadata:
 #    percona.com/issue-vault-token: "true"
 spec:
   crVersion: 1.18.0
-#  enableVolumeExpansion: false
+  enableVolumeExpansion: true
 #  ignoreAnnotations:
 #    - iam.amazonaws.com/role
 #  ignoreLabels:
 #    - rack
-#  secretsName: cluster1-secrets
+  secretsName: xtradb-secrets
 #  vaultSecretName: keyring-secret-vault
 #  sslSecretName: cluster1-ssl
 #  sslInternalSecretName: cluster1-ssl-internal
@@ -145,12 +145,12 @@ spec:
 #    envVarsSecret: my-env-var-secrets
     resources:
       requests:
-        memory: 1G
-        cpu: 600m
+        memory: 8G
+        cpu: "2"
 #        ephemeral-storage: 1G
-#      limits:
-#        memory: 1G
-#        cpu: "1"
+      limits:
+        memory: 10G
+        cpu: "4"
 #        ephemeral-storage: 1G
 #    nodeSelector:
 #      disktype: ssd
@@ -180,15 +180,15 @@ spec:
 #      tolerationSeconds: 6000
     podDisruptionBudget:
       maxUnavailable: 1
-#      minAvailable: 0
+      minAvailable: 1
     volumeSpec:
 #      emptyDir: {}
 #      hostPath:
 #        path: /data
 #        type: Directory
       persistentVolumeClaim:
-#        storageClassName: standard
-#        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: vpsie-fast-block-storage
+        accessModes: [ "ReadWriteOnce" ]
 #        dataSource:
 #          name: new-snapshot-test
 #          kind: VolumeSnapshot
@@ -205,7 +205,7 @@ spec:
 #        exec:
 #          command: [ "/bin/true" ]
   haproxy:
-    enabled: true
+    enabled: false
     size: 3
     image: perconalab/percona-xtradb-cluster-operator:main-haproxy
 #    imagePullPolicy: Always
@@ -379,7 +379,7 @@ spec:
 #        exec:
 #          command: [ "/bin/true" ]
   proxysql:
-    enabled: false
+    enabled: true
     size: 3
     image: perconalab/percona-xtradb-cluster-operator:main-proxysql
 #    imagePullPolicy: Always
@@ -471,11 +471,11 @@ spec:
 #    envVarsSecret: my-env-var-secrets
     resources:
       requests:
-        memory: 1G
-        cpu: 600m
-#      limits:
-#        memory: 1G
-#        cpu: 700m
+        memory: 2G
+        cpu: "1"
+      limits:
+        memory: 4G
+        cpu: "2"
 #    priorityClassName: high-priority
 #    nodeSelector:
 #      disktype: ssd
@@ -542,7 +542,7 @@ spec:
 #   loadBalancerSourceRanges:
 #     - 10.0.0.0/8
   logcollector:
-    enabled: true
+    enabled: false
     image: perconalab/percona-xtradb-cluster-operator:main-logcollector
 #    configuration: |
 #      [OUTPUT]
