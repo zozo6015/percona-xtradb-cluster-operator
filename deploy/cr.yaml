@@ -437,8 +437,8 @@ spec:
 #    readinessDelaySec: 15
 #    livenessDelaySec: 600
 #    schedulerName: mycustom-scheduler
-#    imagePullSecrets:
-#      - name: private-registry-credentials
+    imagePullSecrets:
+      - name: docker-reg
 #    annotations:
 #      iam.amazonaws.com/role: role-arn
 #    labels:
