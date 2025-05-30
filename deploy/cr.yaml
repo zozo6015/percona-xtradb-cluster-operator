@@ -102,8 +102,8 @@ spec:
 #      for PXC 5.7
 #      [xtrabackup]
 #      compress
-#    imagePullSecrets:
-#      - name: private-registry-credentials
+    imagePullSecrets:
+      - name: docker-reg
 #    priorityClassName: high-priority
 #    annotations:
 #      iam.amazonaws.com/role: role-arn
