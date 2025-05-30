@@ -205,7 +205,7 @@ spec:
 #        exec:
 #          command: [ "/bin/true" ]
   haproxy:
-    enabled: false
+    enabled: true
     size: 3
     image: perconalab/percona-xtradb-cluster-operator:main-haproxy
 #    imagePullPolicy: Always
@@ -379,7 +379,7 @@ spec:
 #        exec:
 #          command: [ "/bin/true" ]
   proxysql:
-    enabled: true
+    enabled: false
     size: 3
     image: perconalab/percona-xtradb-cluster-operator:main-proxysql
 #    imagePullPolicy: Always
