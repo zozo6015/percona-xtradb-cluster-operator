@@ -180,7 +180,7 @@ spec:
 #      tolerationSeconds: 6000
     podDisruptionBudget:
       maxUnavailable: 1
-      minAvailable: 1
+      minAvailable: 0
     volumeSpec:
 #      emptyDir: {}
 #      hostPath:
