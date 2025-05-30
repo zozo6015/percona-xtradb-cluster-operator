@@ -21,20 +21,20 @@ spec:
 #  sslSecretName: cluster1-ssl
 #  sslInternalSecretName: cluster1-ssl-internal
 #  logCollectorSecretName: cluster1-log-collector-secrets
-#  initContainer:
-#    image: perconalab/percona-xtradb-cluster-operator:main
-#    containerSecurityContext:
-#      privileged: false
-#      runAsUser: 1001
-#      runAsGroup: 1001
-#    resources:
-#      requests:
-#        memory: 100M
-#        cpu: 100m
-#      limits:
-#        memory: 200M
-#        cpu: 200m
-#  enableCRValidationWebhook: true
+  initContainer:
+    image: perconalab/percona-xtradb-cluster-operator:main
+    containerSecurityContext:
+      privileged: false
+      runAsUser: 1001
+      runAsGroup: 1001
+    resources:
+      requests:
+        memory: 100M
+        cpu: 100m
+      limits:
+        memory: 200M
+        cpu: 200m
+  enableCRValidationWebhook: true
   tls:
     enabled: true
 #    SANs:
