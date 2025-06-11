@@ -600,9 +600,9 @@ spec:
       requests:
         memory: 150M
         cpu: 300m
-  backup:
+#  backup:
 #    allowParallel: true
-    image: perconalab/percona-xtradb-cluster-operator:main-pxc8.0-backup
+#    image: perconalab/percona-xtradb-cluster-operator:main-pxc8.0-backup
 #    backoffLimit: 6
 #    activeDeadlineSeconds: 3600
 #    startingDeadlineSeconds: 300
@@ -610,11 +610,11 @@ spec:
 #    serviceAccountName: percona-xtradb-cluster-operator
 #    imagePullSecrets:
 #      - name: private-registry-credentials
-    pitr:
-      enabled: false
-      storageName: STORAGE-NAME-HERE
-      timeBetweenUploads: 60
-      timeoutSeconds: 60
+#    pitr:
+#      enabled: false
+#      storageName: STORAGE-NAME-HERE
+#      timeBetweenUploads: 60
+#      timeoutSeconds: 60
 #      resources:
 #        requests:
 #          memory: 0.1G
@@ -622,10 +622,10 @@ spec:
 #        limits:
 #          memory: 1G
 #          cpu: 700m
-    storages:
-      s3-us-west:
-        type: s3
-        verifyTLS: true
+#    storages:
+#      s3-us-west:
+#        type: s3
+#        verifyTLS: true
 #        nodeSelector:
 #          storage: tape
 #          backupWorker: 'True'
@@ -676,21 +676,21 @@ spec:
 #            - "--someflag=abc"
 #            xbstream:
 #            - "--someflag=abc"
-        s3:
-          bucket: S3-BACKUP-BUCKET-NAME-HERE
-          credentialsSecret: my-cluster-name-backup-s3
-          region: us-west-2
-      azure-blob:
-        type: azure
-        azure:
-          credentialsSecret: azure-secret
-          container: test
+#        s3:
+#          bucket: S3-BACKUP-BUCKET-NAME-HERE
+#          credentialsSecret: my-cluster-name-backup-s3
+#          region: us-west-2
+#      azure-blob:
+#        type: azure
+#        azure:
+#          credentialsSecret: azure-secret
+#          container: test
 #          endpointUrl: https://accountName.blob.core.windows.net
 #          storageClass: Hot
 #          blockSize: 4194304
 #          concurrency: 4
-      fs-pvc:
-        type: filesystem
+#      fs-pvc:
+#        type: filesystem
 #        nodeSelector:
 #          storage: tape
 #          backupWorker: 'True'
@@ -730,14 +730,14 @@ spec:
 #        podSecurityContext:
 #          fsGroup: 1001
 #          supplementalGroups: [1001, 1002, 1003]
-        volume:
-          persistentVolumeClaim:
+#        volume:
+#          persistentVolumeClaim:
 #            storageClassName: standard
-            accessModes: [ "ReadWriteOnce" ]
-            resources:
-              requests:
-                storage: 6G
-    schedule:
+#            accessModes: [ "ReadWriteOnce" ]
+#            resources:
+#              requests:
+#                storage: 6G
+#    schedule:
 #      - name: "sat-night-backup"
 #        schedule: "0 0 * * 6"
 #        retention:
@@ -745,10 +745,10 @@ spec:
 #          count: 5
 #          deleteFromStorage: true
 #        storageName: s3-us-west
-      - name: "daily-backup"
-        schedule: "0 0 * * *"
-        retention:
-          type: "count"
-          count: 5
-          deleteFromStorage: true
-        storageName: fs-pvc
+#      - name: "daily-backup"
+#        schedule: "0 0 * * *"
+#        retention:
+#          type: "count"
+#          count: 5
+#          deleteFromStorage: true
+#        storageName: fs-pvc
